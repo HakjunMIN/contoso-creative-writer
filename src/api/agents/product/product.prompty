@@ -1,5 +1,5 @@
 ---
-name: Contoso Product Reasearch
+name: Contoso Product Research
 description: A prompt that uses context to ground an incoming question
 authors:
   - Seth Juarez

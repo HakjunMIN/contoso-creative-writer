@@ -52,13 +52,13 @@ def error_message(error: Exception):
     ).to_json_line()
 
 def send_research(research_result):
-    return json.dumps(("researcher", research_result))
+    return json.dumps(("researcher", research_result), ensure_ascii=False)
 
 def send_products(product_result):
-    return json.dumps(("products", product_result))
+    return json.dumps(("products", product_result) ,ensure_ascii=False)
 
 def send_writer(full_result):
-    return json.dumps(("writer", full_result))
+    return json.dumps(("writer", full_result),ensure_ascii=False)
 
 def building_agents_message():
     return Message(
@@ -162,6 +162,7 @@ def create(research_context, product_context, assignment_context, evaluate=False
 @trace  
 def test_create_article(research_context, product_context, assignment_context):
     for result in create(research_context, product_context, assignment_context):
+        
         parsed_result = json.loads(result)
         if type(parsed_result) is dict:
             if parsed_result['type'] == 'researcher':
